@@ -73,11 +73,12 @@ PAVOL BRANCH TEST
                 <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
                 <label for="Consent_Product_holder"><!--%%=v(@checkbox2)=%%--> Consent_Product_holder</label><br>
                 <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-                <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
+                <label for="Consent_Survey_holder"><!-- %%=v(@checkbox3)=%% --> Consent_Survey_holder </label><br>
 
                 <input type="hidden" name="sk" id="sk" value="%%=v(@subscriberKeyEnc)=%%" />
                 <input type="hidden" name="lang" id="lang" value="%%=v(@languageEnc)=%%" />
-                <input type="submit" name="submit" id="submitForm" value="%%=v(@submitvalue)=%%">
+                <!-- <input type="submit" name="submit" id="submitForm" value="%%=v(@submitvalue)=%%"> -->
+                <input type="submit" name="submit" id="submitForm" value="SUBMIT">
             </form>
             <p>
                 <!-- %%=v(@policytext)=%% --> POLICY TEXT <a href="%%=v(@policylink)=%%" target="_blank">%%=v(@policylinktext)=%%</a>.
