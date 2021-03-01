@@ -9,7 +9,6 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <!-- <link rel="stylesheet" href="%%=CloudPagesURL(1736)=%%"> -->
     <link rel="stylesheet" href="Subscription_Center_Secure.css">
-    <link rel="stylesheet" href="KONSKY KOKOT">
 </head>
 
 <body>
@@ -62,13 +61,18 @@
         </div>
         <div class="maincontent">
             <h3 id="settingsheader">
-                <!--  %%=v(@settingsheader)=%%-->Your current email notification settings</h3>
-            <p>%%=v(@settingstext)=%%</p>
+                <!--  %%=v(@settingsheader)=%%-->Here are your current email communication settings:</h3>
+            <p>
+                <!--%%=v(@settingstext)=%%-->You can select which types of emails you want to receive from us.</p>
             <form id="theform" action="https://pub.email.f-secure.com/validate">
                 <input type="checkbox" name="Consent_Marketing_holder" id="Consent_Marketing_holder" class="checkbox" value="%%=v(@Consent_Marketing)=%%" %%=IIF(@Consent_Marketing=='True' , 'checked="checked"', '')=%% />
                 <label for="Consent_Marketing_holder"><!-- %%=v(@checkbox1)=%% --> Consent_Marketing_holder</label><br>
                 <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
                 <label for="Consent_Product_holder">%%=v(@checkbox2)=%%</label><br>
+                <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+                <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
+                <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+                <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
                 <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
                 <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
                 <input type="hidden" name="sk" id="sk" value="%%=v(@subscriberKeyEnc)=%%" />
