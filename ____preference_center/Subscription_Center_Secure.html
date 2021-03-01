@@ -67,38 +67,57 @@
             <p>
                 <!--%%=v(@settingstext)=%%-->You can select which types of emails you want to receive from us.</p>
             <form id="theform" action="https://pub.email.f-secure.com/validate">
+                <br>
                 <input type="checkbox" name="Consent_Marketing_Holder" id="Consent_Marketing_Holder" class="checkbox" value="%%=v(@Consent_Marketing)=%%" %%=IIF(@Consent_Marketing=='True' , 'checked="checked"', '')=%% />
-                <label for="Consent_Marketing_Holder"><!-- %%=v(@checkbox1)=%% --> <strong> Marketing communication</strong></label><br>
+                <label for="Consent_Marketing_Holder"><div><!-- %%=v(@checkbox1)=%% --> <strong> Marketing</strong></label></div>
+                <br>
+                <input type="checkbox" name="Consent_Marketing_Holder" id="Consent_Marketing_Holder" class="checkbox" value="%%=v(@Consent_Marketing)=%%" %%=IIF(@Consent_Marketing=='True' , 'checked="checked"', '')=%% />
+                <label for="Consent_Marketing_Holder"><!-- %%=v(@checkbox1)=%% --> Marketing Communications</label><br>
                 <input type="checkbox" name="Double_Opt-in" id="Double_Opt-in" class="checkbox" value="%%=v(@Double_Opt-in)=%%" %%=IIF(@Double_Opt-in=='True' , 'checked="checked"', '')=%% />
                 <label for="Double_Opt-in"><!-- %%=v(@checkbox1)=%% --> Double Opt-in</label><br>
                 <input type="checkbox" name="Invitation_to_events_and_webinars" id="Invitation_to_events_and_webinars" class="checkbox" value="%%=v(@Invitation_to_events_and_webinars)=%%" %%=IIF(@Invitation_to_events_and_webinars=='True' , 'checked="checked"', '')=%%
                 />
-                <label for="Invitation_to_events_and_webinars"><!-- %%=v(@checkbox1)=%% --> Invitation to events and webinars</label><br>
+                <label for="Invitation_to_events_and_webinars"><!-- %%=v(@checkbox1)=%% --> Invitation to events and webinars</label>
+                <br>
+                <br>
+                <br>
                 <input type="checkbox" name="Marketing_Communications" id="Marketing_Communications" class="checkbox" value="%%=v(@Marketing_Communications)=%%" %%=IIF(@Marketing_Communications=='True' , 'checked="checked"', '')=%% />
-                <label for="Marketing_Communications"><div><!-- %%=v(@checkbox1)=%% --> <strong> Marketing Communications</strong></label></div><br>
+                <label for="Marketing_Communications"><div><!-- %%=v(@checkbox1)=%% --> <strong> Marketing Communications</strong></label></div>
+                <br>
+                
 
 
         <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
-        <label for="Consent_Product_holder">%%=v(@checkbox2)=%%</label><br>
+        <label for="Consent_Product_holder">Protection Service for Business</label><br>
         <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-        <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
+        <label for="Consent_Survey_holder">Business Suite</label><br>
         <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-        <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
+        <label for="Consent_Survey_holder">Radar</label><br>
         <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-        <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
-
+        <label for="Consent_Survey_holder">Rapid Detection & Response</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">Cloud Protect for Office</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">Cloud Protect for Salesforce</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">Consulting Services</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">Countercept</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">Phishd</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">B2B Partner</label><br>
+        <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Survey_holder">Service Provider Product Comm. (B2C)</label><br>
+        <br>
+        <br>
         <input type="checkbox" name="Marketing_Communications" id="Marketing_Communications" class="checkbox" value="%%=v(@Marketing_Communications)=%%" %%=IIF(@Marketing_Communications=='True' , 'checked="checked"', '')=%% />
-        <label for="Marketing_Communications"><div><!-- %%=v(@checkbox1)=%% --> <strong> Marketing Communications</strong></label></div><br>
+        <label for="Marketing_Communications"><div><!-- %%=v(@checkbox1)=%% --> <strong>Surveys</strong></label></div><br>
 
 
     <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
-    <label for="Consent_Product_holder">%%=v(@checkbox2)=%%</label><br>
-    <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-    <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
-    <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-    <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
-    <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
-    <label for="Consent_Survey_holder">%%=v(@checkbox3)=%%</label><br>
+    <label for="Consent_Product_holder">Surveys</label><br>
+
 
     <input type="hidden" name="sk" id="sk" value="%%=v(@subscriberKeyEnc)=%%" />
     <input type="hidden" name="lang" id="lang" value="%%=v(@languageEnc)=%%" />
