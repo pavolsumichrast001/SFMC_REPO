@@ -71,7 +71,8 @@
                 <input type="checkbox" name="Consent_Marketing_Holder" id="Consent_Marketing_Holder" class="checkbox" value="%%=v(@Consent_Marketing)=%%" %%=IIF(@Consent_Marketing=='True' , 'checked="checked"', '')=%% />
                 <label for="Consent_Marketing_Holder"><!-- %%=v(@checkbox1)=%% --> <strong> Marketing</strong></label>
                 <br>
-                <div class="ChildClass" style="margin-left: 40px;">
+                <div class="ChildClass" style="margin-left: 30px;">
+                    <p>Cyber security insights, newsletters, news and offers on F-Secure products and services.</p>
                     <input type="checkbox" name="Consent_Marketing_Holder" id="Consent_Marketing_Holder" class="checkbox" value="%%=v(@Consent_Marketing)=%%" %%=IIF(@Consent_Marketing=='True' , 'checked="checked"', '')=%% />
                     <label for="Consent_Marketing_Holder"><!-- %%=v(@checkbox1)=%% --> Marketing Communications</label><br>
 
@@ -87,9 +88,11 @@
                 <input type="checkbox" name="Product_and_service_updates" id="Product_and_service_updates" class="checkbox" value="%%=v(@Product_and_service_updates)=%%" %%=IIF(@Product_and_service_updates=='True' , 'checked="checked"', '')=%% />
                 <label for="Product_and_service_updates"><!-- %%=v(@checkbox1)=%% --> <strong> Product and service updates</strong></label>
                 <br>
+                <div class="ChildClass" style="margin-left: 30px;">
+                    <p>Information and reminders about your F-Secure products and services. You will always receive critical product and service emails.</p>
 
 
-                <div class="ChildClass" style="margin-left: 40px;">
+
                     <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
                     <label for="Consent_Product_holder">Protection Service for Business</label><br>
                     <input type="checkbox" name="Consent_Survey_holder" id="Consent_Survey_holder" class="checkbox" value="%%=v(@Consent_Survey)=%%" %%=IIF(@Consent_Survey=='True' , 'checked="checked"', '')=%% />
@@ -118,7 +121,8 @@
                 <input type="checkbox" name="Surveys_holder" id="Surveys_holder" class="checkbox" value="%%=v(@Surveys_holder)=%%" %%=IIF(@Surveys_holder=='True' , 'checked="checked"', '')=%% />
                 <label for="Surveys_holder"><!-- %%=v(@Surveys_holder)=%% --> <strong>Surveys holder</strong></label><br>
 
-                <div class="ChildClass" style="margin-left: 40px;">
+                <div class="ChildClass" style="margin-left: 30px;">
+                    <p>Surveys regarding your experience with F-Secure, and F-Secure products and services.</p>
                     <input type="checkbox" name="Surveys" id="Surveys" class="checkbox" value="%%=v(@Surveys)=%%" %%=IIF(@Surveys=='True' , 'checked="checked"', '')=%% />
                     <label for="Surveys">Surveys</label><br>
                 </div>
@@ -127,8 +131,11 @@
 
                 <input type="checkbox" name="Opt_out_from_all" id="Opt_out_from_all" class="checkbox" value="%%=v(@Opt_out_from_all)=%%" %%=IIF(@Opt_out_from_all=='True' , 'checked="checked"', '')=%% />
                 <label for="Opt_out_from_all"><!-- %%=v(@Opt_out_from_all)=%% --> <strong>Opt out from all email communications</strong></label><br>
-
-
+                <div class="ChildClass" style="margin-left: 30px;">
+                    <p>You will always receive confirmation emails, transactional emails, and critical communications related to your F-Secure products and services.</p>
+                </div>
+                <br>
+                <br>
                 <input type="hidden" name="sk" id="sk" value="%%=v(@subscriberKeyEnc)=%%" />
                 <input type="hidden" name="lang" id="lang" value="%%=v(@languageEnc)=%%" />
                 <!-- <input type="submit" name="submit" id="submitForm" value="%%=v(@submitvalue)=%%"> -->
