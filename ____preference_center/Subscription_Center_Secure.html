@@ -113,12 +113,9 @@
         <br>
         <input type="checkbox" name="Marketing_Communications" id="Marketing_Communications" class="checkbox" value="%%=v(@Marketing_Communications)=%%" %%=IIF(@Marketing_Communications=='True' , 'checked="checked"', '')=%% />
         <label for="Marketing_Communications"><div><!-- %%=v(@checkbox1)=%% --> <strong>Surveys</strong></label></div><br>
-
-
-    <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
-    <label for="Consent_Product_holder">Surveys</label><br>
-
-
+        <input type="checkbox" name="Consent_Product_holder" id="Consent_Product_holder" class="checkbox" value="%%=v(@Consent_Product)=%%" %%=IIF(@Consent_Product=='True' , 'checked="checked"', '')=%% />
+        <label for="Consent_Product_holder">Surveys</label><br>
+    
     <input type="hidden" name="sk" id="sk" value="%%=v(@subscriberKeyEnc)=%%" />
     <input type="hidden" name="lang" id="lang" value="%%=v(@languageEnc)=%%" />
     <!-- <input type="submit" name="submit" id="submitForm" value="%%=v(@submitvalue)=%%"> -->
