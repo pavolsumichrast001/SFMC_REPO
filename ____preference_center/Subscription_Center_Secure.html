@@ -21,8 +21,19 @@
             </div>
 
             <!--
-                %%[ VAR @subscriberKey, @Consent_Marketing, @Consent_Product, @Consent_Survey, @master_de, @language, @languageEnc, @subscriberKeyEnc, @i, @SubscriberRow, @SubscriberCount set @subscriberKeyEnc = QUERYPARAMETER("sk") if not empty(@subscriberKeyEnc) then
-            ]%%
+                %%[ 
+                VAR @subscriberKey, 
+                    @Consent_Marketing, 
+                    @Consent_Product, 
+                    @Consent_Survey, 
+                    @master_de, 
+                    @language, 
+                    @languageEnc, 
+                    @subscriberKeyEnc, 
+                    @i, 
+                    @SubscriberRow, 
+                    @SubscriberCount set @subscriberKeyEnc = QUERYPARAMETER("sk") if not empty(@subscriberKeyEnc) then
+                ]%%
             <script runat=server language=javascript>
                 Platform.Load("Core", "1.1.1");
                 try {
