@@ -68,15 +68,26 @@
                 <!--%%=v(@settingstext)=%%-->You can select which types of emails you want to receive from us.</p>
             <form id="theform" action="https://pub.email.f-secure.com/validate">
                 <br>
-                <input type="checkbox" name="Marketing" id="Marketing" class="checkbox" value="%%=v(@Marketing)=%%" %%=IIF(@Marketing=='True' , 'checked="checked"', '')=%% />
+
+                <script language="JavaScript">
+                    function toggle(source) {
+                    checkboxes = document.getElementsByName('Marketing1');
+                    for(var i=0, n=checkboxes.length;i<n;i++) {
+                      checkboxes[i].checked = source.checked;
+                    }
+                  }
+                </script>
+
+
+                <input type="checkbox" onClick="toggle(this)" name="Marketing1" id="Marketing" class="checkbox" value="%%=v(@Marketing1)=%%" %%=IIF(@Marketing1=='True' , 'checked="checked"', '')=%% />
                 <label for="Marketing"><!-- %%=v(@checkbox1)=%% --> <strong>Marketing</strong></label>
                 <br>
                 <div class="ChildClass" style="margin-left: 30px;">
                     <p>Cyber security insights, newsletters, news and offers on F-Secure products and services.</p>
-                    <input type="checkbox" name="Marketing_Communications" id="Marketing_Communications" class="checkbox" value="%%=v(@Marketing_Communications)=%%" %%=IIF(@Marketing_Communications=='True' , 'checked="checked"', '')=%% />
+                    <input type="checkbox" name="Marketing1" id="Marketing_Communications" class="checkbox" value="%%=v(@Marketing_Communications)=%%" %%=IIF(@Marketing_Communications=='True' , 'checked="checked"', '')=%% />
                     <label for="Marketing_Communications"><!-- %%=v(@checkbox1)=%% --> Marketing Communications</label><br>
 
-                    <input type="checkbox" name="Double_Opt-in" id="Double_Opt-in" class="checkbox" value="%%=v(@Double_Opt-in)=%%" %%=IIF(@Double_Opt-in=='True' , 'checked="checked"', '')=%% />
+                    <input type="checkbox" name="Marketing1" id="Double_Opt-in" class="checkbox" value="%%=v(@Double_Opt-in)=%%" %%=IIF(@Double_Opt-in=='True' , 'checked="checked"', '')=%% />
                     <label for="Double_Opt-in"><!-- %%=v(@checkbox1)=%% --> Double Opt-in</label><br>
                     <input type="checkbox" name="Invitation_to_events_and_webinars" id="Invitation_to_events_and_webinars" class="checkbox" value="%%=v(@Invitation_to_events_and_webinars)=%%" %%=IIF(@Invitation_to_events_and_webinars=='True' , 'checked="checked"', '')=%%
                     />
