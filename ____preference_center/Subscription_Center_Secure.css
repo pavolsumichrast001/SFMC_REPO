@@ -70,6 +70,15 @@ body {
   padding: 0 0 15px;
 }
 
+.maincontent p5 {
+  font-size: 14px;
+  line-height: 10%;
+  font-weight: normal;
+  color: #928b8b;
+  margin: 0;
+  padding: 0 0 15px;
+}
+
 .maincontent h5 {
   font-size: 14px;
   line-height: 50%;

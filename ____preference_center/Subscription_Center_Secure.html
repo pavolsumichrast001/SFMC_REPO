@@ -99,7 +99,7 @@
                 <br>
                 <br>
                 <input type="checkbox" name="OptOutAll" id="Invitations" class="checkbox" value="%%=v(@Invitations)=%%" %%=IIF(@Invitations=='True' , 'checked="checked"', '')=%% />
-                <label for="Marketing"><!-- %%=v(@checkbox1)=%% --> <strong>Invitations</strong></label>
+                <label for="Invitations"><!-- %%=v(@checkbox1)=%% --> <strong>Invitations</strong></label>
                 <br>
                 <div class="ChildClass" style="margin-left: 30px;">
                     <p>Invitation to webinars and events.</p>
@@ -136,8 +136,8 @@
                 <br>
                 <br>
                 <br>
-                <input type="checkbox" name="OptOutAll" id="Surveys_holder" class="checkbox" value="%%=v(@Surveys_holder)=%%" %%=IIF(@Surveys_holder=='True' , 'checked="checked"', '')=%% />
-                <label for="Surveys_holder"><!-- %%=v(@Surveys_holder)=%% --> <strong>Surveys</strong></label><br>
+                <input type="checkbox" name="OptOutAll" id="Surveys" class="checkbox" value="%%=v(@Surveys)=%%" %%=IIF(@Surveys=='True' , 'checked="checked"', '')=%% />
+                <label for="Surveys"><!-- %%=v(@Surveys_holder)=%% --> <strong>Surveys</strong></label><br>
 
                 <div class="ChildClass" style="margin-left: 30px;">
                     <p>Surveys regarding your experience with F-Secure, and F-Secure products and services.</p>
@@ -148,15 +148,8 @@
                 </div>
                 <br>
                 <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                
-                <input type="checkbox" onClick="toggle(this)" name="OptOutAll" id="Opt_out_from_all" class="checkbox" value="%%=v(@Opt_out_from_all)=%%" %%=IIF(@Opt_out_from_all=='True' , 'checked="checked"', '')=%% />
+
+                <input type="checkbox" onClick="toggle(this)" name="Opt_out_from_all" id="Opt_out_from_all" class="checkbox" value="%%=v(@Opt_out_from_all)=%%" %%=IIF(@Opt_out_from_all=='True' , 'checked="checked"', '')=%% />
                 <label for="Opt_out_from_all"><!-- %%=v(@Opt_out_from_all)=%% --> <strong>Opt out from all email communications</strong></label><br>
                 <div class="ChildClass" style="margin-left: 30px;">
                     <p>You will always receive confirmation emails, transactional emails, and critical communications related to your F-Secure products and services.</p>
@@ -168,6 +161,13 @@
                 <!-- <input type="submit" name="submit" id="submitForm" value="%%=v(@submitvalue)=%%"> -->
                 <input type="submit" name="submit" id="submitForm" value="UPDATE">
             </form>
+            <br>
+            <br>
+            <p5>We respect your privacy and will not share your private information</p5>
+            <br>
+            <br>
+            
+
             <p>
                 <!-- %%=v(@policytext)=%% <a href="%%=v(@policylink)=%%" target="_blank">%%=v(@policylinktext)=%%</a>. -->
             </p>
