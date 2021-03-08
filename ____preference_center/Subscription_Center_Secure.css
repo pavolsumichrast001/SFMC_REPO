@@ -122,6 +122,12 @@ body {
   min-width: 144px;
   outline: none;
 }
+
+
+#id-name label {
+  font-size: 50px;
+  color: #a30101;
+}
 .maincontent input[type="submit"]:hover {
   background: #0f58dc;
 }
@@ -161,6 +167,7 @@ body {
 [type="checkbox"]:checked + label:hover {
   color: #aaaaaa;
 }
+
 /* checkbox aspect */
 [type="checkbox"]:not(:checked) + label:before,
 [type="checkbox"]:checked + label:before {
