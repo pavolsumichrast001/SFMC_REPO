@@ -92,7 +92,7 @@ body {
     padding: 0 0 15px;
 }
 
-.p6 {
+.Grey {
     font-size: 14px;
     color:rgb(179, 179, 179);
     font-weight: normal;
@@ -112,6 +112,10 @@ body {
     font-size: 14px;
     margin-left: 30px; margin-top: -18px;
     color: #666666;
+}
+
+.PapaClass {
+    color:rgb(179, 179, 179);
 }
 
 .maincontent p:last-child {

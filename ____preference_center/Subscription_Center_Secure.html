@@ -95,7 +95,7 @@
             <input type="checkbox" name="OptOutAll" id="Marketing" class="checkbox" value="%%=v(@Marketing)=%%" %%=IIF(@Marketing=='True' , 'checked="checked"', '')=%% />
             <label for="Marketing"><!-- %%=v(@checkbox1)=%% --> <strong>Marketing communications</strong></label>
             <br>
-            <div class="ChildClass" style="margin-left: 30px;">
+            <div class="ChildClass" style=>
                 <p>Cyber security insights, newsletters, news and offers on F-Secure products and services.</p>
             </div>
             <br>
@@ -103,13 +103,13 @@
             <input type="checkbox" name="OptOutAll" id="Invitations" class="checkbox" value="%%=v(@Invitations)=%%" %%=IIF(@Invitations=='True' , 'checked="checked"', '')=%% />
             <label for="Invitations"><!-- %%=v(@checkbox1)=%% --> <strong>Invitations</strong></label>
             <br>
-            <div class="ChildClass" style="margin-left: 30px; margin-top: -18px">
+            <div class="ChildClass" style=>
                 <p>Invitation to webinars and events.</p>
             </div>
             <br>
             <br>
             <h5><strong>Product and service updates</strong></h5>
-            <div class="ChildClass" style="margin-left: 29px;">
+            <div class="ChildClass">
                 <p2>Information and reminders about your F-Secure products and services. You will always receive critical product and service emails.</p2>
                 <br>
                 <br>
@@ -141,7 +141,7 @@
             <input type="checkbox" name="OptOutAll" id="Surveys" class="checkbox" value="%%=v(@Surveys)=%%" %%=IIF(@Surveys=='True' , 'checked="checked"', '')=%% />
             <label for="Surveys"><!-- %%=v(@Surveys_holder)=%% --> <strong>Surveys</strong></label><br>
 
-            <div class="ChildClass" style="margin-left: 30px;">
+            <div class="ChildClass">
                 <p>Surveys regarding your experience with F-Secure, and F-Secure products and services.</p>
                 <!-- 
                     <input type="checkbox" name="OptOutAll" id="Surveys" class="checkbox" value="%%=v(@Surveys)=%%" %%=IIF(@Surveys=='True' , 'checked="checked"', '')=%% />
@@ -153,12 +153,15 @@
             <br>
             <br>
             <br>
-            <input type="checkbox" onClick="toggle(this)" name="Opt_out_from_all" id="id-name" class="checkbox" value="%%=v(@Opt_out_from_all)=%%" %%=IIF(@Opt_out_from_all=='True' , 'checked="checked"', '')=%% />
-            <label for="id-name"><!-- %%=v(@Opt_out_from_all)=%% --><OptOutAllColor style="color:rgb(179, 179, 179);"> <strong>Opt out from all email communications</strong></OptOutAllColor></label><br>
+            <input type="checkbox" onClick="toggle(this)" name="Opt_out_from_all" id="Opt_out_from_all" class="checkbox" value="%%=v(@Opt_out_from_all)=%%" %%=IIF(@Opt_out_from_all=='True' , 'checked="checked"', '')=%% />
+            <label for="Opt_out_from_all"><!-- %%=v(@Opt_out_from_all)=%% --><OptOutAllColor style="color:rgb(179, 179, 179);"> <strong>Opt out from all email communications</strong></OptOutAllColor></label>
+            <br>
             <div class="ChildClass">
-                <div class="p6"  style="color:rgb(179, 179, 179);">
-                <p6> You will always receive confirmation emails, transactional emails, and critical communications related to your F-Secure products and services. </p6>
+                <div class="Grey">
+                    <span> You will always receive confirmation emails, transactional emails, and critical communications related to your F-Secure products and services.</span>
                 </div>
+                </div>
+            
                 <br>
                 <br>
                 <!-- <input type="hidden" name="sk" id="sk" value="%%=v(@subscriberKeyEnc)=%%" />
