@@ -51,6 +51,7 @@ body {
 }
 
 .maincontent {
+    font-size: 15px;
     width: 80%;
     margin: 60px 10%;
     font-family: Arial, sans-serif;
@@ -61,7 +62,7 @@ body {
 }
 
 .maincontent h3 {
-    font-size: 18px;
+    font-size: 22px;
     font-weight: normal;
     color: #000;
     margin: 0;
