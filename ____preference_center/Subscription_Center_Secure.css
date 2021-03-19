@@ -283,4 +283,66 @@ label:hover:before {
 }
 
 
+/* notification and alert CSS */
+
+.alertGreen {
+    padding: 20px;
+    background-color: #00a538;
+    color: white;
+}
+
+.alertRed {
+    padding: 20px;
+    background-color: #bf0001;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+/*loader CSS */
+
+.loading:after {
+    content: '\2026';
+}
+
+
+/* :not(:required) hides this rule from IE9 and below */
+
+.loading:not(:required) {
+    animation: loading 1250ms infinite linear;
+    border: 6px solid #0014a0;
+    border-right-color: transparent;
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 50px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 50px;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 /* END Custom Checbox CSS */
