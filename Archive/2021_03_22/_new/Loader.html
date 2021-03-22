@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Loading</title>
+    <link rel="stylesheet" href="Subscription_Center_Secure.css">
+</head>
+
+<body>
+    <style>
+        .loading:after {
+            content: '\2026';
+        }
+        /* :not(:required) hides this rule from IE9 and below */
+        
+        .loading:not(:required) {
+            animation: loading 1250ms infinite linear;
+            border: 6px solid #0014a0;
+            border-right-color: transparent;
+            border-radius: 24px;
+            box-sizing: border-box;
+            display: inline-block;
+            height: 48px;
+            overflow: hidden;
+            text-indent: -9999px;
+            width: 48px;
+        }
+        
+        @keyframes loading {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <div class="loading">Loading...</div>
+</body>
+
+</html>
