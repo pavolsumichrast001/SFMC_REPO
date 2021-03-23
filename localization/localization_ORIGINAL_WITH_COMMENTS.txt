@@ -1,0 +1,51 @@
+%%[
+/*Nacitanie Language*/
+SET @LN = RequestParameter('Language')
+
+/*Vyhladanie poctu riadkov podla jazyku v Localizacnej Tabulke*/
+SET @LNLookup = LookupRows('Localization_S_Fecure', 'Language', @LN)
+
+/*Nastavenie Defaultu*/
+set @rowCount = rowcount(@LNLookup)
+       if @rowCount == 0 then
+         set @LN= "EN"
+         set @LNLookup= LookupRows('Localization_S_Fecure', 'Language', @LN)
+       endif
+
+/*Spocitacnie Riadkov - my budeme vediet presny, ale kvoli scriptu, to tu musi byt*/
+SET @LNRowcount = Rowcount(@LNLookup)
+
+/*IF podmienky, bez ktorej sa to nezaobide - pri 0 nedostaneme vysledky, pri 1 a viac, dostaneme*/
+IF @LNRowcount > 0 THEN 
+
+/*Podla poctu riadkov si vytlacime tolko premennych, kolko potrebujeme. Tu si ich iba nastavujeme.*/
+FOR @i = 1 to @LNRowcount DO
+SET @Rows = Row(@LNLookup, @i)
+SET @Content = Field(@Rows, "Content")
+
+IF @Content == 'Block1' THEN
+SET @Block1 = field(@Rows, 'Localization')
+ELSEIF @Content == 'Block2' THEN
+SET @Block2 = field(@Rows, 'Localization')
+ELSEIF @Content == 'Block3' THEN
+SET @Block3 = field(@Rows, 'Localization')
+ENDIF
+
+NEXT @i
+ENDIF
+
+/*Mimo Blocku si vypiseme jednotlive premenne z For Loopu*/
+
+
+
+]%%
+Uvod
+%%=v(@Block1)=%%
+
+Vitajte niekde v rici
+%%=v(@Block2)=%%
+
+Chcete sa odhlasit? Ano nie
+%%=v(@Block3)=%%
+
+Unsubscribe
