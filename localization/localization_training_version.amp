@@ -1,0 +1,74 @@
+%%[
+SET @ID = [ID]
+SET @Email = [Email]
+SET @Language= [Language]
+
+ 
+
+SET @LN = [Language]
+
+ 
+
+SET @LNLookup = LookupRows('ENT.TEST_b2b-doi-thank-you-page_translations', 'Language', @LN)
+
+ 
+
+
+set @rowCount = rowcount(@LNLookup)
+       if @rowCount == 0 then
+         set @LN= "EN"
+         set @LNLookup= LookupRows('ENT.TEST_b2b-doi-thank-you-page_translations', 'Language', @LN)
+       endif
+
+ 
+
+SET @LNRowcount = Rowcount(@LNLookup)
+
+ 
+
+IF @LNRowcount > 0 THEN 
+
+ 
+
+FOR @i = 1 to @LNRowcount DO
+SET @Rows = Row(@LNLookup, @i)
+SET @ContentName = Field(@Rows, "ContentName")
+
+ 
+
+IF @ContentName == 'thankyouheader' THEN
+SET @thankyouheader = field(@Rows, 'Content')
+ELSEIF @ContentName == 'blogURL' THEN
+SET @blogURL = field(@Rows, 'Content')
+ELSEIF @ContentName == 'blogintro' THEN
+SET @blogintro = field(@Rows, 'Content')
+ENDIF
+
+ 
+
+NEXT @i
+ENDIF
+
+ 
+
+]%%
+
+ 
+
+
+Uvod
+%%=v(@thankyouheader)=%%
+
+ 
+
+Vitajte niekde v rici
+%%=v(@blogURL)=%%
+
+ 
+
+Chcete sa odhlasit? Ano nie
+%%=v(@blogCTA)=%%
+
+ 
+
+Unsubscribe
