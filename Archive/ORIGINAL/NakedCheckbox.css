@@ -1,0 +1,103 @@
+/* Custom Checkbox CSS */
+
+
+/* Base for label styling */
+
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="checkbox"]:not(:checked)+label,
+[type="checkbox"]:checked+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    line-height: 150%;
+    color: #666666;
+    margin-bottom: 0;
+    display: block;
+}
+
+[type="checkbox"]:not(:checked)+label:hover,
+[type="checkbox"]:checked+label:hover {
+    color: #aaaaaa;
+}
+
+
+/* checkbox aspect */
+
+[type="checkbox"]:not(:checked)+label:before,
+[type="checkbox"]:checked+label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #666666;
+}
+
+
+/* checked mark aspect */
+
+[type="checkbox"]:not(:checked)+label:after,
+[type="checkbox"]:checked+label:after {
+    font-family: "Arial Unicode MS" !important;
+    /* Hack to make color styling of check mark possible in iOS */
+    content: "✔";
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    font-size: 16px;
+    line-height: 0.8;
+    color: #1476ff !important;
+    transition: all 0.2s;
+}
+
+
+/* checked mark aspect changes */
+
+[type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+    transform: scale(0);
+}
+
+[type="checkbox"]:checked+label:after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* disabled checkbox */
+
+[type="checkbox"]:disabled:not(:checked)+label:before,
+[type="checkbox"]:disabled:checked+label:before {
+    box-shadow: none;
+    border-color: #bbb;
+    background-color: #ddd;
+}
+
+[type="checkbox"]:disabled:checked+label:after {
+    color: #999;
+}
+
+[type="checkbox"]:disabled+label {
+    color: #aaa;
+}
+
+
+/* accessibility */
+
+[type="checkbox"]:checked:focus+label:before,
+[type="checkbox"]:not(:checked):focus+label:before {
+    border: 1px solid #666666;
+}
+
+
+/* hover style just for information */
+
+label:hover:before {
+    border: 1px solid #aaaaaa !important;
+}

@@ -109,7 +109,7 @@ body {
 
 .ChildClass {
     font-size: 14px;
-    margin-left: 30px;
+    margin-left: 21px;
     margin-top: -18px;
     color: #666666;
 }
@@ -180,13 +180,7 @@ body {
 }
 
 
-/* Custom Checkbox CSS */
-
-
-/* Base for label styling */
-
-
-/* [type="checkbox"]:not(:checked),
+[type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     position: absolute;
     left: -9999px;
@@ -214,7 +208,7 @@ body {
 /* checkbox aspect */
 
 
-/* [type="checkbox"]:not(:checked)+label:before,
+[type="checkbox"]:not(:checked)+label:before,
 [type="checkbox"]:checked+label:before {
     content: "";
     position: absolute;
@@ -229,13 +223,50 @@ body {
 /* checked mark aspect */
 
 
-/* [type="checkbox"]:not(:checked)+label:after,
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="checkbox"]:not(:checked)+label,
+[type="checkbox"]:checked+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    line-height: 150%;
+    color: #666666;
+    margin-bottom: 0;
+    display: block;
+}
+
+[type="checkbox"]:not(:checked)+label:hover,
+[type="checkbox"]:checked+label:hover {
+    color: #aaaaaa;
+}
+
+
+/* checkbox aspect */
+
+[type="checkbox"]:not(:checked)+label:before,
+[type="checkbox"]:checked+label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #666666;
+}
+
+
+/* checked mark aspect */
+
+[type="checkbox"]:not(:checked)+label:after,
 [type="checkbox"]:checked+label:after {
     font-family: "Arial Unicode MS" !important;
     /* Hack to make color styling of check mark possible in iOS */
-
-
-/*   content: "✔";
+    content: "✔";
     position: absolute;
     top: 5px;
     left: 4px;
@@ -248,8 +279,7 @@ body {
 
 /* checked mark aspect changes */
 
-
-/* [type="checkbox"]:not(:checked)+label:after {
+[type="checkbox"]:not(:checked)+label:after {
     opacity: 0;
     transform: scale(0);
 }
@@ -262,8 +292,7 @@ body {
 
 /* disabled checkbox */
 
-
-/*[type="checkbox"]:disabled:not(:checked)+label:before,
+[type="checkbox"]:disabled:not(:checked)+label:before,
 [type="checkbox"]:disabled:checked+label:before {
     box-shadow: none;
     border-color: #bbb;
@@ -281,8 +310,7 @@ body {
 
 /* accessibility */
 
-
-/* [type="checkbox"]:checked:focus+label:before,
+[type="checkbox"]:checked:focus+label:before,
 [type="checkbox"]:not(:checked):focus+label:before {
     border: 1px solid #666666;
 }
@@ -346,6 +374,7 @@ label:hover:before {
     text-indent: -9999px;
     width: 50px;
 }
+
 
 @keyframes loading {
     from {
