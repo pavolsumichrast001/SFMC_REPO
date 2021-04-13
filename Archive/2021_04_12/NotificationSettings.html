@@ -14,7 +14,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png"  href="https://help.f-secure.com/img/favicon.ico/somewhere/myicon.png" />
-    <link rel="stylesheet" href="%%=CloudPagesURL(1980)=%%">
+    <link rel="stylesheet" href="preference_center_CSS_new.css">
     <script src="https://kit.fontawesome.com/c65463aaa7.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
@@ -197,7 +197,7 @@
 
     <script language="JavaScript">
                     function toggle(source) {
-                        checkboxes = document.getElementsByName('OptOutAll');
+                        checkboxes = document.getElementsByName('Opt_out_from_all');
                         for (var i = 0, n = checkboxes.length; i < n; i++) {
                             checkboxes[i].checked = source.unchecked;
     
@@ -322,7 +322,7 @@
                           if(i == 0){
                               Write("<h5><strong>" + ProductAndServicesLabel + "</strong></h5>");
                               Write("<div class='ChildClass'>");
-                              Write("<p3>" + ProductAndServicesLabelDescription + "</p3><br><br>");
+                              Write("<p2>" + ProductAndServicesLabelDescription + "</p2><br><br>");
                           }
           
                           if(consentPayload[i].Consent_Group__c == 'Product/Service'){
@@ -347,7 +347,7 @@
                                       var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
 
 
-                                      Write("<label for='" + consentPayload[i].Consent_Type__c + "'>" + consentName + "</label> <br></br>");
+                                      Write("<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>");
                                       
                                       /* If there exist a description to the consent */
 

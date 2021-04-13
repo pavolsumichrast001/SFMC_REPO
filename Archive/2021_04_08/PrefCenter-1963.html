@@ -14,7 +14,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png"  href="https://help.f-secure.com/img/favicon.ico/somewhere/myicon.png" />
-    <link rel="stylesheet" href="%%=CloudPagesURL(1980)=%%">
+    <link rel="stylesheet" href="%%=CloudPagesURL(1965)=%%">
     <script src="https://kit.fontawesome.com/c65463aaa7.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
@@ -68,7 +68,7 @@
 
     Platform.Load("core", "1.1.5");
 
-    debug = "True";
+    debug = "";
  
     var form_btn_submitted = Platform.Request.GetFormField('submitted'); 
     function jsonParse(string) {
@@ -262,52 +262,60 @@
                     var consentPayload = SFMCDataExtension.Rows.Retrieve(Marketingfilter);
                 
                       if(individualId){
+
+
                         for (var i = 0; i < consentPayload.length; i++) {
           
           
                         /** Print out marketing consents */
           
-                      if(consentPayload[i].Consent_Group__c == 'Marketing'){
+                         if(consentPayload[i].Consent_Group__c == 'Marketing'){
           
-                          if(i == 0){
-                            
-                            /** if text is needed before the first row of consent */
-                            
-                          }
-          
+                                    if(i == 0){
+                                        
+                                        /** if text is needed before the first row of consent */
+                                        
+                                    }
+                    
+                                    // Check if PrivacyConsentStatus is equal to "Seen", then hide
+                                    
+                                    if(consentPayload[i].PrivacyConsentStatus != 'Seen'){ 
+
+                                                    if(consentPayload[i].ConsentStatus__c == 'True'){
+                                                            
                                 
-                        if(consentPayload[i].ConsentStatus__c == 'True'){
-                                  
-    
-                                Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
-          
-                                }
-                                else {
-                                  
-                                  Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
-          
-                                }
+                                                            Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
+                                    
+                                                            }
+                                                            else {
+                                                            
+                                                            Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
+                                    
+                                                            }
 
-                                /** Lookup translated layer for each consent */  
+                                                            /** Lookup translated layer for each consent */  
 
+                                                    
+                                                            
+                                                                var consentName = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c]);
+                                                                var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
+
+
+                                                                Write("<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>");
+                                                                
+                                                                /* If there exist a description to the consent */
+
+                                                                if (consentDescription) {
+
+                                                                    Write("<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>");
+
+                                                                }     
+                                                
+                                                }
+
+                                        }
                         
-                                 
-                                      var consentName = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c]);
-                                      var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
-
-
-                                      Write("<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>");
-                                      
-                                      /* If there exist a description to the consent */
-
-                                      if (consentDescription) {
-
-                                        Write("<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>");
-
-                                      }          
-                              }
-                        
-                        }
+                            }
           
           
                         /** Print out Product / Services */                    
@@ -316,51 +324,68 @@
                         var ProductAndServicesLabel = Variable.GetValue("@ProductAndServicesLabel");
                         var ProductAndServicesLabelDescription = Variable.GetValue("@ProductAndServicesLabelDescription");
 
+                        // Converting array to string, because indexOf is not supported for arrays in Marketing Cloud    
+                      
+                        var convertArrayToString = consentPayload.toString();
+                        var containProductAndServicesConsents = convertArrayToString.indexOf("Product/Service");    
+
+                        // check if Product & Services exist in the array
+
+                        if(containProductAndServicesConsents > -1){
                        
                         for (var i = 0; i < consentPayload.length; i++) {
-
-                          if(i == 0){
-                              Write("<h5><strong>" + ProductAndServicesLabel + "</strong></h5>");
-                              Write("<div class='ChildClass'>");
-                              Write("<p3>" + ProductAndServicesLabelDescription + "</p3><br><br>");
-                          }
-          
-                          if(consentPayload[i].Consent_Group__c == 'Product/Service'){
-
-                           
-
-                            if(consentPayload[i].ConsentStatus__c == 'True'){
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
-                                      
-              
-                                    }
-                                    else {
-                                      
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
-
-                                    }
-                                      
-                                    
-                                    /** Lookup translated layer for each consent */  
-
-                                      var consentName = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c]);
-                                      var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
+                            
+                        
 
 
-                                      Write("<label for='" + consentPayload[i].Consent_Type__c + "'>" + consentName + "</label> <br></br>");
-                                      
-                                      /* If there exist a description to the consent */
+                                        if(i == 0){
+                                            Write("<h5><strong>" + ProductAndServicesLabel + "</strong></h5>");
+                                            Write("<div class='ChildClass'>");
+                                            Write("<p2>" + ProductAndServicesLabelDescription + "</p2><br><br>");
+                                        }
+                        
+                                        // Check if PrivacyConsentStatus is equal to "Seen", then hide
+                                        
+                                        if(consentPayload[i].PrivacyConsentStatus != 'Seen'){ 
 
-                                      if (consentDescription) {
+                                                    if(consentPayload[i].Consent_Group__c == 'Product/Service'){ 
 
-                                        Write("<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>");
+                                                        if(consentPayload[i].ConsentStatus__c == 'True'){
+                                                                Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
+                                                                
+                                        
+                                                                }
+                                                                else {
+                                                                
+                                                                Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
 
-                                      }          
+                                                                }
+                                                                
+                                                                
+                                                                /** Lookup translated layer for each consent */  
 
-                          }
+                                                                var consentName = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c]);
+                                                                var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
+
+
+                                                                Write("<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>");
+                                                                
+                                                                /* If there exist a description to the consent */
+
+                                                                if (consentDescription) {
+
+                                                                    Write("<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>");
+
+                                                                }          
+
+                                                    }
+
+                                            }
+                                }
+
                       }
           
-                      Write("</div>");
+                      
 
           
                         /** Print out marketing consents */
@@ -373,39 +398,44 @@
                             /** if text is needed before the first row of consent */
                         
                         }
-          
-                           if(consentPayload[i].Consent_Group__c == 'Surveys'){
-                             
-                        
-                                  if(consentPayload[i].ConsentStatus__c == 'True'){
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
+                        // Check if PrivacyConsentStatus is equal to "Seen", then hide
+                                        
+                        if(consentPayload[i].PrivacyConsentStatus != 'Seen'){ 
+                            
+                                        if(consentPayload[i].Consent_Group__c == 'Surveys'){
+                                            
+                                        
+                                                if(consentPayload[i].ConsentStatus__c == 'True'){
+                                                    Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
 
-              
-                                    }
-                                    else {
-                                      
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");              
-              
-                                    }
-
-
-                                       /** Lookup translated layer for each consent */  
-
-                                       var consentName = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c]);
-                                      var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
+                            
+                                                    }
+                                                    else {
+                                                    
+                                                    Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");              
+                            
+                                                    }
 
 
-                                      Write("<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>");
-                                      
-                                      /* If there exist a description to the consent */
+                                                    /** Lookup translated layer for each consent */  
 
-                                      if (consentDescription) {
+                                                    var consentName = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c]);
+                                                    var consentDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter','Content',['Language','TranslationLayer'],[language, consentPayload[i].Consent_Type__c + "-description"]);
 
-                                        Write("<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>");
 
-                                      }   
-                                  
-                              }
+                                                    Write("<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>");
+                                                    
+                                                    /* If there exist a description to the consent */
+
+                                                    if (consentDescription) {
+
+                                                        Write("<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>");
+
+                                                    }   
+                                                
+                                            }
+
+                                }
                           }          
                       }
                     
@@ -444,6 +474,8 @@
             <br>
             <p5>%%=v(@PolicyText)=%%</p5>
             <a href="%%=RedirectTo(@PolicyLink)=%%" target=_blank>%%=v(@PolicyLinkText)=%%</a><br>
+
+        </div>
 
 </body>
 
