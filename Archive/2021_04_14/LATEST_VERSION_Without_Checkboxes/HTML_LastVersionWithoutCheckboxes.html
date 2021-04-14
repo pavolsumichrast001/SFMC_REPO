@@ -14,7 +14,7 @@
     <meta name="robots" content="noindex,nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/png"  href="https://help.f-secure.com/img/favicon.ico/somewhere/myicon.png" />
-    <link rel="stylesheet" href="%%=CloudPagesURL(1983)=%%">
+    <link rel="stylesheet" href="%%=CloudPagesURL(1980)=%%">
     <script src="https://kit.fontawesome.com/c65463aaa7.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
@@ -197,7 +197,7 @@
 
     <script language="JavaScript">
                     function toggle(source) {
-                        checkboxes = document.getElementsByName('LameLame');
+                        checkboxes = document.getElementsByName('OptOutAll');
                         for (var i = 0, n = checkboxes.length; i < n; i++) {
                             checkboxes[i].checked = source.unchecked;
     
@@ -279,12 +279,12 @@
                         if(consentPayload[i].ConsentStatus__c == 'True'){
                                   
     
-                                Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='LameLame' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
+                                Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
           
                                 }
                                 else {
                                   
-                                  Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='LameLame' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
+                                  Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
           
                                 }
 
@@ -330,13 +330,13 @@
                            
 
                             if(consentPayload[i].ConsentStatus__c == 'True'){
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='LameLame' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
+                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
                                       
               
                                     }
                                     else {
                                       
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='LameLame' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
+                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");
 
                                     }
                                       
@@ -378,13 +378,13 @@
                              
                         
                                   if(consentPayload[i].ConsentStatus__c == 'True'){
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='LameLame' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
+                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "' checked>");
 
               
                                     }
                                     else {
                                       
-                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='LameLame' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");              
+                                      Write("<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c  + "'>");              
               
                                     }
 
@@ -423,8 +423,8 @@
 
           
 
-                <input type="checkbox" onClick="toggle(this)" name="LameLame" id="Opt_out_from_all" class="checkbox" value="Opt_out_from_all" />
-                <label for="Opt_out_from_all"><LameLameColor style="color:rgb(179, 179, 179);"> <strong>%%=v(@OptOutFromAll)=%%</strong></LameLameColor></label>
+                <input type="checkbox" onClick="toggle(this)" name="Opt_out_from_all" id="Opt_out_from_all" class="checkbox" value="Opt_out_from_all" />
+                <label for="Opt_out_from_all"><OptOutAllColor style="color:rgb(179, 179, 179);"> <strong>%%=v(@OptOutFromAll)=%%</strong></OptOutAllColor></label>
                 <br><br>
                 <div class="ChildClass">
                     <div class="Grey">
