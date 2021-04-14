@@ -1,0 +1,304 @@
+<!doctype html>
+<html>
+
+<head>
+
+    %%[ var @individualId, @language set @individualId = RequestParameter("individualId") set @language = RequestParameter("language") ]%%
+
+    <meta charset="utf-8">
+    <title>Notification Settings</title>
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="https://help.f-secure.com/img/favicon.ico/somewhere/myicon.png" />
+    <link rel="stylesheet" href="%%=CloudPagesURL(1965)=%%">
+    <script src="https://kit.fontawesome.com/c65463aaa7.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-font-face.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-free.fontawesome.com/releases/latest/css/free-v4-shims.min.css" media="all">
+
+
+
+    <script>
+        /** Using jQuery to parse array from input fields */
+        $(document).ready(function() {
+            $("#saveChangesBtn").click(function() {
+                var i = {};
+                $("input[type=checkbox]").each(function() {
+                        var n, t = this.id;
+                        n = 1 == this.checked, i[t] = i[t] ? t + "[]" : n
+                    }).each(function() {
+                        this.id = i[this.id]
+                    }),
+                    $("#saveChangesBtn").val(JSON.stringify(i))
+            })
+        });
+
+        // Show spinner
+        $(document).on('submit', 'form#UpdatePreferences', function() {
+            $('#spinner').show();
+        });
+
+        $(document).ready(function() {
+
+            var $successMessage = $('#success-message');
+            var $errorMessage = $('#error-message');
+
+            if ($successMessage.length) {
+                //you can now reuse  $myDiv here, without having to select it again.
+
+                $(".alertGreen").show();
+                $(".alertGreen").fadeOut(10000);
+            }
+
+            if ($errorMessage.length) {
+                //you can now reuse  $myDiv here, without having to select it again.
+
+                $(".alertRed").show();
+                $(".alertRed").fadeOut(10000);
+
+            }
+
+
+        });
+    </script>
+
+
+    <script runat=server>
+        /** Initiate platform load */
+
+        Platform.Load("core", "1.1.5");
+
+        debug = "";
+
+        var form_btn_submitted = Platform.Request.GetFormField('submitted');
+
+        function jsonParse(string) {
+            return Platform.Function.ParseJSON(string + '');
+        }
+        var object = jsonParse(form_btn_submitted);
+        for (var property in object) {
+            if (object.hasOwnProperty(property)) {
+                /** Setting key and value, and calling update data extension function */
+                updateDataExtention(property, object[property]);
+
+
+                //update the SF object indicated by the Id
+
+                try {
+
+                    var updateCoreValue;
+                    if (object[property] == true) {
+                        updateCoreValue = "OptIn";
+                    } else {
+                        updateCoreValue = "OptOut";
+                    }
+                    var fieldsToUpdate = "'PrivacyConsentStatus','" + updateCoreValue + "'";
+                    var updateSFResults = updateSFSC(property, fieldsToUpdate);
+
+                } catch (e1) {
+                    Write("<br>ID: " + value + "was not updated correct in Sales Cloud");
+                }
+
+                //End Sales Cloud Update*/     
+
+            }
+        }
+
+        /** Update Data Extension */
+
+        function updateDataExtention(key, value) {
+
+            try {
+                //initiate DE using it's External Key  
+                var SFMCDataExtension = DataExtension.Init("CPConsent_CloudPage_Sandbox");
+                var updateDataExtension = SFMCDataExtension.Rows.Update({
+                    ConsentStatus__c: value
+                }, ['Id'], [key]);
+
+                Write("<div id='success-message' style='display: none;''></div>");
+
+            } catch (error) {
+                Write("<div id='error-message' style='display: none;''></div>");
+                /* Write("<br>error: " + Stringify(error));*/
+            }
+        }
+
+
+        // Update Sales Cloud contact
+
+
+        function updateSFSC(Id, fieldsToUpdate) {
+            var results = 0;
+
+
+            // Set Customer Object Key
+            var SFCustomerObject = "ContactPointConsent";
+
+            var updateSFObject = "";
+            updateSFObject += "\%\%[ ";
+            updateSFObject += "set @SFUpdateResults = UpdateSingleSalesforceObject('";
+            updateSFObject += SFCustomerObject + "','" + Id + "'," + fieldsToUpdate;
+            updateSFObject += ") ";
+            updateSFObject += "output(concat(@SFUpdateResults)) ";
+            updateSFObject += "]\%\%";
+
+            try {
+                results = Platform.Function.TreatAsContent(updateSFObject);
+            } catch (e2) {
+                if (debug) {
+                    Write("<br>e2:  " + fieldsToUpdate + Stringify(e2));
+                }
+            }
+        }
+
+
+        // Lookup translations labels from TranslationLayer_PreferenceCenter data extension
+
+
+        try {
+
+            var language = Variable.GetValue("@language");
+            var Heading1 = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'Heading1']);
+            var Text1 = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'Text1']);
+            var ProductAndServicesLabel = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'ProductAndServicesLabel']);
+            var ProductAndServicesLabelDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'ProductAndServicesLabel-description']);
+            var OptOutFromAll = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'OptOutFromAll']);
+            var OptOutFromAllDescription = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'OptOutFromAll-description']);
+            var CTAtext = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'CTAtext']);
+            var PolicyText = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'PolicyText']);
+            var PolicyLinkText = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'PolicyLinkText']);
+            var PolicyLink = Platform.Function.Lookup('TranslationLayer_PreferenceCenter', 'Content', ['Language', 'TranslationLayer'], [language, 'PolicyLink']);
+
+
+            Variable.SetValue("@Heading1", Heading1);
+            Variable.SetValue("@Text1", Text1);
+            Variable.SetValue("@ProductAndServicesLabel", ProductAndServicesLabel);
+            Variable.SetValue("@ProductAndServicesLabelDescription", ProductAndServicesLabelDescription);
+            Variable.SetValue("@OptOutFromAll", OptOutFromAll);
+            Variable.SetValue("@OptOutFromAllDescription", OptOutFromAllDescription);
+            Variable.SetValue("@CTAtext", CTAtext);
+            Variable.SetValue("@PolicyText", PolicyText);
+            Variable.SetValue("@PolicyLinkText", PolicyLinkText);
+            Variable.SetValue("@PolicyLink", PolicyLink);
+
+        } catch (e2) {
+            if (debug) {
+                Write("<br>Error:  " + Stringify(e2));
+            }
+        }
+    </script>
+
+
+
+    <!-- <p> You can select which types of emails you want to receive from us.</p> -->
+
+    <script language="JavaScript">
+        function toggle(source) {
+            checkboxes = document.getElementsByName('OptOutAll');
+            for (var i = 0, n = checkboxes.length; i < n; i++) {
+                checkboxes[i].checked = source.unchecked;
+
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+    <a id="scrollUp"></a>
+    <div class="container">
+        <div class="header">
+            <div class="headerlogo">
+                <img alt="F-Secure" src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1660 456.47' fill='%230014a0'%3e%3cpath d='M1193.7 379.12c0-4-2.06-6-8.46-6a52.06 52.06 0 0 0-5.75.33v17.9h4.3v-6h1.9l3.28 6h5.12l-4.23-6.9a5.71 5.71 0 0 0 3.86-5.32zm-8.46 3h-1.46v-5.67c.35 0 1-.05 1.46-.05 3.66 0 4.06.9 4.06 2.83s-.92 2.9-4.06 2.9zm1.12-17.72c-12 0-18 6.08-18 18s6.07 18 18 18 18-6.1 18-18-6.1-18-18-18zm0 32.5c-10.43 0-14.55-3.9-14.55-14.53s4.12-14.5 14.55-14.5 14.53 3.87 14.53 14.5-4.25 14.54-14.53 14.54zM0 202.14c0-3 .66-3.67 3.68-3.67h117.6c3 0 3.68.66 3.68 3.67v35.4c0 3-.65 3.68-3.68 3.68H48.44v43.1h60.82c3 0 3.68.67 3.68 3.68v34.75c0 3-.68 3.68-3.68 3.68H48.44v66.82c0 3-.65 3.67-3.65 3.67H3.68c-3 0-3.68-.66-3.68-3.67zm147.37 124.3c-3 0-3.7-.68-3.7-3.68V288c0-3 .7-3.68 3.7-3.68h60.13c3 0 3.67.67 3.67 3.68v34.75c0 3-.65 3.68-3.67 3.68zm131.3-73.86c0 13 7.68 15.7 37.42 24.4 42.45 12.35 58.16 28.74 58.16 61.8 0 43.1-36.1 61.5-77.2 61.5-23.4 0-45.76-6.7-58.47-13.7-2-1-3-2-3-4.7v-26.06c0-2.32.66-3 2.68-3 4.34 0 30.4 7.34 55.44 7.34 22.4 0 32.77-5.33 32.77-18.72s-9.38-17-35.78-24.05c-44.43-12-59.45-28.4-59.45-61.48 0-39.1 31.43-60.8 69.84-60.8 22.36 0 40.42 4.68 57.78 13.7 2.34 1.36 3 2 3 4.7v26c0 2.35-1.34 3-3 3-5.68 0-29.05-7.35-55.13-7.35-18.05.07-25.05 7.1-25.05 17.43zm162.4 82.22c1.66 21.38 13.37 27.4 39.07 27.4s45.13-6.37 49.8-6.37c2 0 3 .34 3 3v24.72c0 3-1.34 3.68-3.68 4.68a148.21 148.21 0 0 1-58.14 12c-49.12 0-77.5-22.4-77.5-77.18 0-51.8 28-79.87 75.5-79.87 53.45 0 70.16 32.08 70.16 75.5v12.38c0 3-.65 3.67-3.7 3.67zm-.34-26.74h53.47c0-21.7-7-30.4-25.06-30.4-16.4 0-27.42 8.68-28.4 30.4zm193.46-64.83c19.05 0 38.07 5.7 50.8 11.7 3 1.35 3.34 2 3.34 5v24c0 1.67-.34 3-2.35 3-4.68 0-22.7-5.63-43.76-5.63-26.08 0-35.76 14-35.76 40.43s9.68 40.44 35.76 40.44c21.06 0 40.42-6.4 45.1-6.4 2 0 2.34 1.34 2.34 3v24.74c0 3-.34 3.68-3.33 5-12.72 6-33.1 11.7-52.14 11.7-51.8 0-75.53-32.07-75.53-78.52s23.74-78.45 75.53-78.45zm151.05 157.05c-41.1 0-72.2-13-72.2-61.15v-89.6c0-3 .67-3.66 3.7-3.66h40.07c3 0 3.68.66 3.68 3.66v83.3c0 20.38 6.68 29.4 27 29.4 8.37 0 16.7-.33 23.08-1v-111.7c0-3 .66-3.66 3.66-3.66h40.1c3 0 3.67.66 3.67 3.66v138.73c0 3-.32 3.34-2.65 4a323.73 323.73 0 0 1-70.11 8.03zM961 282.33c-8.68 0-17 1-22.05 3v107.93c0 3-.65 3.67-3.65 3.67h-40.1c-3 0-3.7-.66-3.7-3.67V259.6c0-2.33 1-3.33 3-4 18-7 37-12.37 58.46-12.37 12.67 0 25 1 36.08 4.34 2 .68 2.34 1.36 2.34 3.35V281c0 3-1 3.33-3 3.33-3.7 0-12.4-2-27.4-2zm87.85 52.47c1.65 21.38 13.37 27.4 39.07 27.4s45.14-6.37 49.78-6.37c2 0 3 .34 3 3v24.72c0 3-1.3 3.68-3.64 4.68a148.29 148.29 0 0 1-58.14 12c-49.12 0-77.52-22.4-77.52-77.18 0-51.8 28.05-79.87 75.5-79.87 53.47 0 70.17 32.08 70.17 75.5v12.38c0 3-.68 3.67-3.67 3.67zm-.34-26.74h53.5c0-21.7-7-30.4-25.07-30.4-16.4 0-27.43 8.68-28.42 30.4zm609.96-265.4C1505.6-10.67 1345-13.1 1203 30.28c-30.3 9.25-38.48 34.83-33.17 56.4a737.8 737.8 0 0 0 34.29 104.76c.27.63.65.33.56-.5-1.78-16.05 10.24-36.26 34.5-43.6 134.4-40.77 251.7-30.75 356.3 4.72 17.63 6 37.35-3.47 43-21.62 14.23-46.16 20.1-77.5 21.54-85.28a2.22 2.22 0 0 0-1.53-2.48zM1304.6 143.9c-17.7 3.75-42.1 9.5-60.23 15.7-36.47 12.48-34.94 56.83-15.36 71 1.35-8.26 10.12-19.45 20-23.24a418.3 418.3 0 0 1 115.2-26.28 211.22 211.22 0 0 1-59.61-37.18zm290.53 89.13c-105.54-50.54-232.48-54.2-337.15-13.48-17.22 6.7-28.2 27.78-17.22 47.82a772.25 772.25 0 0 0 64.42 98.43c-3.46-12 2.7-34.15 26.08-41.35 64.38-19.85 132.2-11.45 177.33 6.75 14.982 5.836 32.003.358 40.77-13.12 22.32-33.25 42.42-73.28 46.85-82.3a1.93 1.93 0 0 0-1.08-2.76zm-104.8 159.05c-11.47-3.28-40.06-25.74-51.13-36.82-7-7-17.24-17-28.17-29-24.57 0-48.6 2.54-74.24 10.63-23.55 7.42-25.86 35.07-15.53 49.23 17.74 21.88 29.92 33.85 49.62 54.15 20.57 21.2 57.16 21.73 78.3.46 15.4-15.52 24.84-25.68 42.2-45.36a2 2 0 0 0-1.07-3.29z'/%3e%3c/svg%3e">
+            </div>
+            <h1 id="unsubheader">%%=v(@Heading1)=%%</h1>
+        </div>
+
+
+
+        <div class="maincontent">
+
+
+            <div class="alertGreen" style="display:none;">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+                <strong>We've changed your email notification settings.</strong>
+            </div>
+
+            <div class="alertRed" style="display:none;">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">×</span>
+                <strong>We are sorry, something went wrong. <a href="https://www.f-secure.com/en/business/support-and-downloads?a=support" style="color:white; font-size: 11px;" ;="" target="_blank"><strong> <strong> Contact support </strong> </strong>
+                </a><strong>
+                </strong>
+                </strong>
+            </div>
+            <br><br>
+
+            <h3 id="settingsheader"> %%=v(@Text1)=%%</h3>
+            <br>
+
+            <form id="UpdatePreferences" class="mt-4" action="%%=RequestParameter('PAGEURL')=%%" method="post" enctype="application/x-www-form-urlencoded">
+
+                <script runat="server" executioncontexttype="get">
+
+                    Platform.Load("core", "1.1.5"); try { //initiate DE using it's External Key var SFMCDataExtension = DataExtension.Init("CPConsent_CloudPage_Sandbox"); var TranslationDataExtension = DataExtension.Init("TranslationLayer_PreferenceCenter"); var subscriberKey
+                    = Variable.GetValue("@subscriberKey"); var individualId = Variable.GetValue("@individualId"); var language = Variable.GetValue("@language"); //define filter criteria var Marketingfilter = {Property:"Individual_Id__c",SimpleOperator:"equals",Value:individualId};
+                    //retrieve data with a complex filters var consentPayload = SFMCDataExtension.Rows.Retrieve(Marketingfilter); if(individualId){ for (var i = 0; i
+                    < consentPayload.length; i++) { /** Print out marketing consents
+                        */ if(consentPayload[i].Consent_Group__c=='Marketing' ){ if(i==0 ){ /** if text is needed before the first row of consent */ } // Check if PrivacyConsentStatus is equal to "Seen", then hide if(consentPayload[i].PrivacyConsentStatus
+                        !='Seen' ){ if(consentPayload[i].ConsentStatus__c=='True' ){ Write( "<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c + "' checked>"); } else
+                        { Write( "<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c + "'>"); } /** Lookup translated layer for each consent */ var consentName=P latform.Function.Lookup(
+                        'TranslationLayer_PreferenceCenter', 'Content',[ 'Language', 'TranslationLayer'],[language, consentPayload[i].Consent_Type__c]); var consentDescription=P latform.Function.Lookup( 'TranslationLayer_PreferenceCenter', 'Content',[ 'Language', 'TranslationLayer'],[language,
+                        consentPayload[i].Consent_Type__c + "-description"]); Write( "<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>"); /* If there exist a description to the consent */ if (consentDescription)
+                        { Write( "<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>"); } } } } /** Print out Product / Services */ var ProductAndServicesLabel=V ariable.GetValue( "@ProductAndServicesLabel"); var ProductAndServicesLabelDescription=V
+                        ariable.GetValue( "@ProductAndServicesLabelDescription"); // Converting array to string, because indexOf is not supported for arrays in Marketing Cloud function createStringArray(arr, prop) { var result=[ ]; for (var i=0 ; i < arr.length;
+                        i +=1 ) { result.push(arr[i][prop]); } return result; } var createStringArray=c reateStringArray(consentPayload, "Consent_Group__c"); var convertArrayToString=c reateStringArray.toString(); var containProductAndServicesConsents=c onvertArrayToString.indexOf(
+                        "Product/Service"); // check if Product & Services exist in the array if(containProductAndServicesConsents> -1){ for (var i = 0; i
+                        < consentPayload.length; i++) { if(i==0 ){ Write( "<h5><strong>" + ProductAndServicesLabel + "</strong></h5>"); Write( "<div class='ChildClass'>"); Write( "<p2>" + ProductAndServicesLabelDescription +
+                            "</p2><br><br>"); } // Check if PrivacyConsentStatus is equal to "Seen", then hide if(consentPayload[i].PrivacyConsentStatus !='Seen' ){ if(consentPayload[i].Consent_Group__c=='Product/Service' ){ if(consentPayload[i].ConsentStatus__c=='True'
+                            ){ Write( "<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c + "' checked>"); } else { Write( "<input type='checkbox' id='" + consentPayload[i].Id
+                            + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c + "'>"); } /** Lookup translated layer for each consent */ var consentName=P latform.Function.Lookup( 'TranslationLayer_PreferenceCenter',
+                            'Content',[ 'Language', 'TranslationLayer'],[language, consentPayload[i].Consent_Type__c]); var consentDescription=P latform.Function.Lookup( 'TranslationLayer_PreferenceCenter', 'Content',[ 'Language', 'TranslationLayer'],[language, consentPayload[i].Consent_Type__c
+                            + "-description"]); Write( "<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>"); /* If there exist a description to the consent */ if (consentDescription) { Write(
+                            "<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>"); } } } } } /** Print out marketing consents */ for (var i=0 ; i < consentPayload.length; i++) { if(i==0 ){ /** if text is needed before the first row of consent */ } // Check if
+                            PrivacyConsentStatus is equal to "Seen", then hide if(consentPayload[i].PrivacyConsentStatus !='Seen' ){ if(consentPayload[i].Consent_Group__c=='Surveys' ){ if(consentPayload[i].ConsentStatus__c=='True' ){ Write(
+                            "<input type='checkbox' id='" + consentPayload[i].Id + "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c + "' checked>"); } else { Write( "<input type='checkbox' id='" + consentPayload[i].Id +
+                            "' name='OptOutAll' class='checkbox'" + " value='" + consentPayload[i].ConsentStatus__c + "'>"); } /** Lookup translated layer for each consent */ var consentName=P latform.Function.Lookup( 'TranslationLayer_PreferenceCenter', 'Content',[ 'Language',
+                            'TranslationLayer'],[language, consentPayload[i].Consent_Type__c]); var consentDescription=P latform.Function.Lookup( 'TranslationLayer_PreferenceCenter', 'Content',[ 'Language', 'TranslationLayer'],[language, consentPayload[i].Consent_Type__c
+                            + "-description"]); Write( "<label for='" + consentPayload[i].Consent_Type__c + "'><strong>" + consentName + "</strong></label> <br></br>"); /* If there exist a description to the consent */ if (consentDescription) { Write(
+                            "<div class='ChildClass'><p2>" + consentDescription + "</p2></div> <br></br>"); } } } } } } catch (error) { Write( "<br>error: " + Stringify(error)); } </script>
+
+
+
+                            <br><br>
+
+
+
+                            <input type="checkbox" onClick="toggle(this)" name="Opt_out_from_all" id="Opt_out_from_all" class="checkbox" value="Opt_out_from_all" />
+                            <label for="Opt_out_from_all"><OptOutAllColor style="color:rgb(179, 179, 179);"> <strong>%%=v(@OptOutFromAll)=%%</strong></OptOutAllColor></label>
+                            <br><br>
+                            <div class="ChildClass">
+                                <div class="Grey">
+                                    <span> %%=v(@OptOutFromAllDescription)=%%</span>
+                                </div>
+                            </div>
+
+                            <br><br>
+
+                            <button id="saveChangesBtn" name="submitted" value="1" type="submit" class="btn btn-primary">
+                    <i id="spinner" class="fas fa-spinner fa-spin" style="display: none;"></i>%%=v(@CTAtext)=%%
+                </button>
+
+
+            </form>
+
+            <br>
+            <p5>%%=v(@PolicyText)=%%</p5>
+            <a href="%%=RedirectTo(@PolicyLink)=%%" target=_blank>%%=v(@PolicyLinkText)=%%</a><br>
+
+        </div>
+
+</body>
+
+</html>

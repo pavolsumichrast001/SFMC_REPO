@@ -1,0 +1,9 @@
+1. soren doriesit: 
+    1. hide surveys 
+    2. partner updates outside of products 
+    3. order 
+    4. error message - pohladat na DE - ci su aj v inych jazykoch... 
+2. clean up preference center folder 
+    1. backup code with date to VS 
+    2. delete 3. backup latest version
+of preference center 4. checkbox for FF1 5. deletion management
