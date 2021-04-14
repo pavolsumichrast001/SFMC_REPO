@@ -187,7 +187,12 @@ body {
 }
 
 
-[type="checkbox"]:not(:checked),
+/* Custom Checkbox CSS */
+
+
+/* Base for label styling */
+
+/* [type="checkbox"]:not(:checked),
 [type="checkbox"]:checked {
     position: absolute;
     left: -9999px;
@@ -209,10 +214,10 @@ body {
     color: #aaaaaa;
 }
 
-
+*/
 /* checkbox aspect */
 
-[type="checkbox"]:not(:checked)+label:before,
+/* [type="checkbox"]:not(:checked)+label:before,
 [type="checkbox"]:checked+label:before {
     content: "";
     position: absolute;
@@ -226,11 +231,11 @@ body {
 
 /* checked mark aspect */
 
-[type="checkbox"]:not(:checked)+label:after,
+/* [type="checkbox"]:not(:checked)+label:after,
 [type="checkbox"]:checked+label:after {
     font-family: "Arial Unicode MS" !important;
     /* Hack to make color styling of check mark possible in iOS */
-    content: "✔";
+ /*   content: "✔";
     position: absolute;
     top: 5px;
     left: 4px;
@@ -243,7 +248,7 @@ body {
 
 /* checked mark aspect changes */
 
-[type="checkbox"]:not(:checked)+label:after {
+/* [type="checkbox"]:not(:checked)+label:after {
     opacity: 0;
     transform: scale(0);
 }
@@ -256,7 +261,7 @@ body {
 
 /* disabled checkbox */
 
-[type="checkbox"]:disabled:not(:checked)+label:before,
+/*[type="checkbox"]:disabled:not(:checked)+label:before,
 [type="checkbox"]:disabled:checked+label:before {
     box-shadow: none;
     border-color: #bbb;
@@ -274,7 +279,7 @@ body {
 
 /* accessibility */
 
-[type="checkbox"]:checked:focus+label:before,
+/* [type="checkbox"]:checked:focus+label:before,
 [type="checkbox"]:not(:checked):focus+label:before {
     border: 1px solid #666666;
 }
@@ -285,10 +290,7 @@ body {
 label:hover:before {
     border: 1px solid #aaaaaa !important;
 }
-
-
-/* END Custom Checbox CSS */
-
+-->
 
 /* notification and alert CSS */
 
