@@ -1,0 +1,360 @@
+@font-face {
+    font-family: "FS Sans Web";
+    src: url("https://www.f-secure.com/etc.clientlibs/f-secure/clientlibs/main/resources/fonts/FSSansWeb-Light.woff2") format("woff2"), url("https://www.f-secure.com/etc.clientlibs/f-secure/clientlibs/main/resources/fonts/FSSansWeb-Light.woff") format("woff");
+    font-weight: 200;
+}
+
+@font-face {
+    font-family: "FS Sans Web";
+    src: url("https://www.f-secure.com/etc.clientlibs/f-secure/clientlibs/main/resources/fonts/FSSansWeb-Regular.woff2") format("woff2"), url("https://www.f-secure.com/etc.clientlibs/f-secure/clientlibs/main/resources/fonts/FSSansWeb-Regular.woff") format("woff");
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: "FS Sans Web";
+    src: url("https://www.f-secure.com/etc.clientlibs/f-secure/clientlibs/main/resources/fonts/FSSansWeb-Bold.woff2") format("woff2"), url("https://www.f-secure.com/etc.clientlibs/f-secure/clientlibs/main/resources/fonts/FSSansWeb-Bold.woff") format("woff");
+    font-weight: 700;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "FS Sans Web", Arial, sans-serif;
+    font-weight: 400;
+}
+
+.header {
+    background: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' preserveAspectRatio='none slice' viewBox='0 0 2070 337'%3e%3cstyle%3e%3c!%5bCDATA%5b.B%7bopacity:.6%7d%5d%5d%3e%3c/style%3e%3cdefs%3e%3cclipPath id='A'%3e%3cpath d='M0 0h2070v337H0z' fill='none'/%3e%3c/clipPath%3e%3clinearGradient id='B' x1='2029.27' y1='-48.35' x2='2412.55' y2='-48.35' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='%23dfdfdf'/%3e%3cstop offset='.09' stop-color='%23e9e9e9'/%3e%3cstop offset='.25' stop-color='%23f6f6f6'/%3e%3cstop offset='.48' stop-color='%23fdfdfd'/%3e%3cstop offset='1' stop-color='white'/%3e%3c/linearGradient%3e%3clinearGradient id='C' x1='1682.1' y1='475.59' x2='2268.04' y2='475.59' xlink:href='%23B'/%3e%3clinearGradient id='D' x1='1682.1' y1='358.48' x2='2268.04' y2='358.48' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='%23f0f0f0'/%3e%3cstop offset='.52' stop-color='%23f3f3f3'/%3e%3cstop offset='.97' stop-color='%23fefefe'/%3e%3cstop offset='1' stop-color='white'/%3e%3c/linearGradient%3e%3clinearGradient id='E' x1='1682.1' y1='68.23' x2='2042.08' y2='68.23' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='white'/%3e%3cstop offset='1' stop-color='%23f0f0f0'/%3e%3c/linearGradient%3e%3clinearGradient id='F' x1='2042.08' y1='286.62' x2='2412.55' y2='286.62' xlink:href='%23D'/%3e%3clinearGradient id='G' x1='818.29' y1='418.72' x2='1243.79' y2='418.72' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='%23dfdfdf'/%3e%3cstop offset='.37' stop-color='%23e2e2e2'/%3e%3cstop offset='.69' stop-color='%23ededed'/%3e%3cstop offset='1' stop-color='white'/%3e%3c/linearGradient%3e%3clinearGradient id='H' x1='1142.36' y1='529.31' x2='1682.1' y2='529.31' xlink:href='%23G'/%3e%3clinearGradient id='I' x1='500.6' y1='424.37' x2='1142.36' y2='424.37' xlink:href='%23D'/%3e%3clinearGradient id='J' x1='1142.36' y1='529.49' x2='1869.89' y2='529.49' xlink:href='%23D'/%3e%3clinearGradient id='K' x1='818.29' y1='138.39' x2='1243.79' y2='138.39' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='%23dfdfdf'/%3e%3cstop offset='.26' stop-color='%23ececec'/%3e%3cstop offset='.66' stop-color='%23fafafa'/%3e%3cstop offset='1' stop-color='white'/%3e%3c/linearGradient%3e%3clinearGradient id='L' x1='33.08' y1='26.59' x2='818.29' y2='26.59' xlink:href='%23D'/%3e%3clinearGradient id='M' x1='33.08' y1='406.66' x2='818.29' y2='406.66' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='white'/%3e%3cstop offset='1' stop-color='%23dfdfdf'/%3e%3c/linearGradient%3e%3clinearGradient id='N' x1='-125.31' y1='-193.26' x2='411.71' y2='-193.26' xlink:href='%23G'/%3e%3clinearGradient id='O' x1='-562.49' y1='-161.13' x2='33.08' y2='-161.13' xlink:href='%23D'/%3e%3clinearGradient id='P' x1='-149.93' y1='601.77' x2='158.47' y2='601.77' xlink:href='%23G'/%3e%3clinearGradient id='Q' x1='-562.49' y1='398.98' x2='33.08' y2='398.98' xlink:href='%23G'/%3e%3clinearGradient id='R' x1='1617.91' y1='-195.12' x2='2029.27' y2='-195.12' xlink:href='%23D'/%3e%3clinearGradient id='S' x1='33.08' y1='409.74' x2='500.6' y2='409.74' xlink:href='%23G'/%3e%3clinearGradient id='T' x1='1030.11' y1='-66.13' x2='1682.1' y2='-66.13' xlink:href='%23G'/%3e%3clinearGradient id='U' x1='1089.52' y1='138.26' x2='1682.1' y2='138.26' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='%23f8f8f8'/%3e%3cstop offset='1' stop-color='%23f8f8f8'/%3e%3c/linearGradient%3e%3clinearGradient id='V' x1='818.29' y1='-176.9' x2='1089.52' y2='-176.9' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='%23dfdfdf'/%3e%3cstop offset='.06' stop-color='%23e5e5e5'/%3e%3cstop offset='.3' stop-color='%23f3f3f3'/%3e%3cstop offset='.58' stop-color='%23fcfcfc'/%3e%3cstop offset='1' stop-color='white'/%3e%3c/linearGradient%3e%3clinearGradient id='W' x1='1030.11' y1='-195.12' x2='1682.1' y2='-195.12' xlink:href='%23D'/%3e%3clinearGradient id='X' x1='411.71' y1='-176.9' x2='1030.11' y2='-176.9' xlink:href='%23Y'%3e%3cstop offset='0' stop-color='white'/%3e%3cstop offset='.37' stop-color='%23fcfcfc'/%3e%3cstop offset='.69' stop-color='%23f1f1f1'/%3e%3cstop offset='.99' stop-color='%23dfdfdf'/%3e%3cstop offset='1' stop-color='%23dfdfdf'/%3e%3c/linearGradient%3e%3clinearGradient id='Y' gradientUnits='userSpaceOnUse'/%3e%3c/defs%3e%3cg clip-path='url(%23A)'%3e%3cpath d='M-632-46h3728v1942H-632z' fill='white'/%3e%3cpath d='M2412.55-48.76l-383.28-143.97 12.6 288.75 370.67-144.78z' fill='url(%23B)' class='B'/%3e%3cpath d='M2268.04 622l-585.94-292.8 187.8 263.63L2268.04 622z' fill='url(%23C)' class='B'/%3e%3cpath d='M2268.04 622L2042.08 94.96 1682.1 329.18 2268.04 622z' fill='url(%23D)' class='B'/%3e%3cpath d='M1682.1 329.18l359.98-234.22-12.8-287.7-347.17 521.9z' fill='url(%23E)' class='B'/%3e%3cpath d='M2268.04 622l144.5-670.75-370.47 143.72L2268.04 622z' fill='url(%23F)' class='B'/%3e%3cpath d='M1142.36 729.8l101.43-396.66-425.5-225.5 324.07 622.15z' fill='url(%23G)' class='B'/%3e%3cpath d='M1682.1 329l-438.3 3.95-101.43 396.66L1682.1 329z' fill='url(%23H)' class='B'/%3e%3cpath d='M500.6 741.1l641.76-11.3L818.3 107.64 500.6 741.1z' fill='url(%23I)' class='B'/%3e%3cpath d='M1142.36 729.8L1869.9 592.8l-187.8-263.63-539.74 400.6z' fill='url(%23J)' class='B'/%3e%3cpath d='M818.3 107.64l425.5 225.5-154.27-389.48-271.23 164z' fill='url(%23K)' class='B'/%3e%3cpath d='M33.08 72.22l785.2 35.42L411.7-54.46 33.08 72.22z' fill='url(%23L)' class='B'/%3e%3cpath d='M33.08 72.22L500.6 741.1l317.7-633.46-785.2-35.42z' fill='url(%23M)' class='B'/%3e%3cpath d='M-125.3-458.75L33.08 72.22 411.7-54.46-125.3-458.75z' fill='url(%23N)' class='B'/%3e%3cpath d='M-562.5 136.48L33.08 72.22-125.3-458.75-562.5 136.48z' fill='url(%23O)' class='B'/%3e%3cpath d='M-149.93 1131.32l308.4-384.57L33.08 72.22l-183 1059.1z' fill='url(%23P)' class='B'/%3e%3cpath d='M-501.75 725.74L33.08 72.22-562.5 136.48l60.74 589.26z' fill='url(%23Q)' class='B'/%3e%3cpath d='M1682.1 329.18l347.17-521.9-411.36-526.7 64.2 1048.6z' fill='url(%23R)' class='B'/%3e%3cpath d='M-149.93 1131.32l183-1059.1-534.83 653.52 351.82 405.58z' fill='%23f0f0f0' opacity='.63'/%3e%3cpath d='M33.08 72.47L158.47 747l342.13-5.65L33.08 72.47z' fill='url(%23S)' class='B'/%3e%3cpath d='M1030.1-461.44l59.4 405.1 592.58 385.53-652-790.62z' fill='url(%23T)' class='B'/%3e%3cpath d='M1089.52-56.48L1243.8 333l438.3-3.95-592.58-385.53z' fill='url(%23U)'/%3e%3cpath d='M818.3 107.64l271.23-164-59.4-405.1L818.3 107.64z' fill='url(%23V)' class='B'/%3e%3cpath d='M1617.9-719.43l-587.8 258 652 790.62-64.2-1048.6z' fill='url(%23W)' class='B'/%3e%3cpath d='M1030.1-461.44L411.7-54.46l406.58 162.1 211.82-569.08z' fill='url(%23X)' class='B'/%3e%3c/g%3e%3c/svg%3e");
+    background-size: cover;
+    background-position: 0 0;
+    min-height: 220px;
+    position: relative;
+    width: 100%;
+}
+
+.header .headerlogo {
+    padding: 20px 10% 0;
+}
+
+.header .headerlogo img {
+    width: 120px;
+    height: 33px;
+}
+
+.header h1 {
+    font-family: "FS Sans Web", Arial, sans-serif;
+    font-size: 37px;
+    line-height: 39px;
+    font-weight: normal;
+    color: #000;
+    padding: 30px 10% 60px;
+}
+
+.maincontent {
+    font-size: 15px;
+    width: 80%;
+    margin: 60px 10%;
+    font-family: Arial, sans-serif;
+}
+
+.maincontent form {
+    margin: 10px 0 20px;
+}
+
+.maincontent h3 {
+    font-size: 22px;
+    font-weight: normal;
+    color: #000;
+    margin: 0;
+    padding: 0 0 5px;
+    line-height: 130%;
+}
+
+.maincontent p {
+    font-size: 15px;
+    color: #666666;
+    font-weight: normal;
+    margin: 0;
+}
+
+.maincontent p2 {
+    font-size: 15px;
+    color: #666666;
+    font-weight: normal;
+}
+
+.maincontent p5 {
+    font-size: 14px;
+    font-weight: normal;
+    color: #bbb0b0;
+    margin: 0;
+    padding: 0 0 15px;
+}
+
+.Grey {
+    font-size: 14px;
+    color: rgb(179, 179, 179);
+    font-weight: normal;
+    margin: 0;
+    padding: 0 1px 0px;
+}
+
+.maincontent h5 {
+    font-size: 15px;
+    font-weight: normal;
+    color: #666666;
+    margin: 8px;
+    padding: 0 21px 15px;
+}
+
+.ChildClass {
+    font-size: 14px;
+    margin-left: 30px;
+    margin-top: -18px;
+    color: #666666;
+}
+
+.PapaClass {
+    color: rgb(179, 179, 179);
+}
+
+.maincontent p:last-child {
+    padding: 0px;
+}
+
+.maincontent a {
+    font-size: 14px;
+    line-height: 150%;
+    font-weight: normal;
+    text-decoration: underline;
+    color: #666666;
+    margin: 0;
+    padding: 0 0 20px;
+}
+
+.maincontent a:hover {
+    color: #aaaaaa;
+}
+
+.maincontent input[type="submit"],
+#saveChangesBtn {
+    -webkit-appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    background: #1476ff;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border: none;
+    border-radius: 4px;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: "FS Sans Web", Arial, sans-serif;
+    line-height: 20px;
+    padding: 10px 15px;
+    margin: 15px 10px 10px 0px;
+    min-width: 144px;
+    outline: none;
+}
+
+.maincontent input[type="submit"]:hover,
+#saveChangesBtn:hover {
+    background: #0f58dc;
+}
+
+.maincontent form {
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #666666;
+}
+
+@media screen and (max-width: 480px) {
+    .header h1 {
+        font-size: 30px;
+    }
+    .maincontent {
+        margin-top: 25px;
+    }
+}
+
+
+/* Custom Checkbox CSS */
+
+
+/* Base for label styling */
+
+
+/* [type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="checkbox"]:not(:checked)+label,
+[type="checkbox"]:checked+label {
+    position: relative;
+    padding-left: 30px;
+    cursor: pointer;
+    line-height: 150%;
+    color: #666666;
+    margin-bottom: 0;
+    display: block;
+}
+
+[type="checkbox"]:not(:checked)+label:hover,
+[type="checkbox"]:checked+label:hover {
+    color: #aaaaaa;
+}
+
+*/
+
+
+/* checkbox aspect */
+
+
+/* [type="checkbox"]:not(:checked)+label:before,
+[type="checkbox"]:checked+label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #666666;
+}
+
+
+/* checked mark aspect */
+
+
+/* [type="checkbox"]:not(:checked)+label:after,
+[type="checkbox"]:checked+label:after {
+    font-family: "Arial Unicode MS" !important;
+    /* Hack to make color styling of check mark possible in iOS */
+
+
+/*   content: "✔";
+    position: absolute;
+    top: 5px;
+    left: 4px;
+    font-size: 16px;
+    line-height: 0.8;
+    color: #1476ff !important;
+    transition: all 0.2s;
+}
+
+
+/* checked mark aspect changes */
+
+
+/* [type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+    transform: scale(0);
+}
+
+[type="checkbox"]:checked+label:after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+
+/* disabled checkbox */
+
+
+/*[type="checkbox"]:disabled:not(:checked)+label:before,
+[type="checkbox"]:disabled:checked+label:before {
+    box-shadow: none;
+    border-color: #bbb;
+    background-color: #ddd;
+}
+
+[type="checkbox"]:disabled:checked+label:after {
+    color: #999;
+}
+
+[type="checkbox"]:disabled+label {
+    color: #aaa;
+}
+
+
+/* accessibility */
+
+
+/* [type="checkbox"]:checked:focus+label:before,
+[type="checkbox"]:not(:checked):focus+label:before {
+    border: 1px solid #666666;
+}
+
+
+/* hover style just for information */
+
+label:hover:before {
+    border: 1px solid #aaaaaa !important;
+}
+
+-->
+/* notification and alert CSS */
+
+.alertGreen {
+    padding: 20px;
+    background-color: #00a538;
+    color: white;
+}
+
+.alertRed {
+    padding: 20px;
+    background-color: #bf0001;
+    color: white;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: black;
+}
+
+
+/*loader CSS */
+
+.loading:after {
+    content: '\2026';
+}
+
+
+/* :not(:required) hides this rule from IE9 and below */
+
+.loading:not(:required) {
+    animation: loading 1250ms infinite linear;
+    border: 6px solid #0014a0;
+    border-right-color: transparent;
+    border-radius: 50px;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 50px;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 50px;
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* END Custom Checbox CSS */
