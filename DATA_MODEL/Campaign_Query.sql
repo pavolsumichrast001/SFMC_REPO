@@ -1,0 +1,13 @@
+SELECT
+    Id,
+    CampaignImageId,
+    CampaignMemberRecordTypeId,
+    CreatedById,
+    LastModifiedById,
+    Name,
+    OwnerId,
+    ParentId,
+    Status,
+    FSC_Campaign_ID__c
+FROM
+    ENT.Campaign_Salesforce

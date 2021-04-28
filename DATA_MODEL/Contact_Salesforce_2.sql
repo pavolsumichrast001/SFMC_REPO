@@ -1,0 +1,27 @@
+SELECT
+    AccountId,
+    Active__c,
+    ConnectionReceivedId,
+    ConnectionSentId,
+    Contact_ID__c,
+    Contact_Role__c,
+    CreatedById,
+    Email,
+    FirstName,
+    HasOptedOutOfEmail,
+    Id,
+    IndividualId,
+    Language__c,
+    LastModifiedById,
+    LastName,
+    MasterRecordId,
+    OwnerId,
+    ReportsToId,
+    MailingCountry,
+    MailingStreet,
+    PP2Services__c,
+    FSC_Contact_ID__c,
+    SFMC_Language__c,
+    MailingCity
+FROM
+    Contact_Salesforce_2

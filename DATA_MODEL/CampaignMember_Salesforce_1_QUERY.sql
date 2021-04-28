@@ -1,0 +1,10 @@
+SELECT
+    CampaignId,
+    ContactId,
+    Id,
+    LeadId,
+    LeadOrContactId,
+    LeadOrContactOwnerId,
+    Status
+FROM
+    ENT.CampaignMember_Salesforce_1

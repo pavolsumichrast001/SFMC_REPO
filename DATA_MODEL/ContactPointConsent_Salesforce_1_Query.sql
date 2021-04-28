@@ -1,0 +1,16 @@
+SELECT
+    Id,
+    CaptureContactPointType,
+    CaptureDate,
+    CaptureSource,
+    ConsentStatus__c,
+    ContactPointId,
+    Individual_Id__c,
+    Name,
+    PrivacyConsentStatus,
+    Consent_Group__c,
+    Consent_Type__c,
+    EmailAddress,
+    LastModifiedDate
+FROM
+    ENT.ContactPointConsent_Salesforce_1

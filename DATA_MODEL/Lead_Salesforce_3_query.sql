@@ -1,0 +1,28 @@
+SELECT
+    Id,
+    ContactKey,
+    ConnectionReceivedId,
+    ConnectionSentId,
+    ConvertedAccountId,
+    ConvertedContactId,
+    ConvertedOpportunityId,
+    Email,
+    HasOptedOutOfEmail,
+    IndividualId,
+    MasterRecordId,
+    PartnerAccountId,
+    Product_Solution_of_Interest__c,
+    Status,
+    Company,
+    Country,
+    FirstName,
+    Language__c,
+    LastName,
+    Lead_Request_Type__c,
+    Lead_Type__c,
+    No_of_Employees_for_Segmentation__c,
+    PostalCode,
+    LeadSource,
+    SFMC_Language__c
+FROM
+    ENT.Lead_Salesforce_3
